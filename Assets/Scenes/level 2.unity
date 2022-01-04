@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 9f175cb6208ad9140bc8079e6b9832ce, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -573,6 +573,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 305402037, guid: 32deec2633e2e6f42a46e3debf7b1c61, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 305402037, guid: 32deec2633e2e6f42a46e3debf7b1c61, type: 3}
+      propertyPath: movePosition.x
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 4005989109884054206, guid: 32deec2633e2e6f42a46e3debf7b1c61, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -591,7 +599,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4005989109884054206, guid: 32deec2633e2e6f42a46e3debf7b1c61, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -26.9
+      value: -27
       objectReference: {fileID: 0}
     - target: {fileID: 4005989109884054206, guid: 32deec2633e2e6f42a46e3debf7b1c61, type: 3}
       propertyPath: m_LocalPosition.y
@@ -938,6 +946,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 305402037, guid: 32deec2633e2e6f42a46e3debf7b1c61, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 305402037, guid: 32deec2633e2e6f42a46e3debf7b1c61, type: 3}
+      propertyPath: movePosition.y
+      value: -10
+      objectReference: {fileID: 0}
     - target: {fileID: 4005989109884054206, guid: 32deec2633e2e6f42a46e3debf7b1c61, type: 3}
       propertyPath: m_RootOrder
       value: 23
@@ -1660,6 +1676,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 305402037, guid: 32deec2633e2e6f42a46e3debf7b1c61, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 305402037, guid: 32deec2633e2e6f42a46e3debf7b1c61, type: 3}
+      propertyPath: movePosition.x
+      value: -20
+      objectReference: {fileID: 0}
     - target: {fileID: 4005989109884054206, guid: 32deec2633e2e6f42a46e3debf7b1c61, type: 3}
       propertyPath: m_RootOrder
       value: 27
@@ -2066,38 +2090,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1911938986, guid: 055b8710150182e4eb2cc8c3b8765ab5, type: 3}
-      propertyPath: m_Mass
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1911938988, guid: 055b8710150182e4eb2cc8c3b8765ab5, type: 3}
-      propertyPath: flySpeed
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 1911938988, guid: 055b8710150182e4eb2cc8c3b8765ab5, type: 3}
-      propertyPath: rotSpeed
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 297810790418679433, guid: 055b8710150182e4eb2cc8c3b8765ab5, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: fe1ed0e4a96a38c49b80b181a1a9c621, type: 2}
-    - target: {fileID: 1933876194691756124, guid: 055b8710150182e4eb2cc8c3b8765ab5, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: fe1ed0e4a96a38c49b80b181a1a9c621, type: 2}
-    - target: {fileID: 3924423491809903705, guid: 055b8710150182e4eb2cc8c3b8765ab5, type: 3}
-      propertyPath: m_Pitch
-      value: 0.53
-      objectReference: {fileID: 0}
-    - target: {fileID: 3924423491809903705, guid: 055b8710150182e4eb2cc8c3b8765ab5, type: 3}
-      propertyPath: Priority
-      value: 138
-      objectReference: {fileID: 0}
-    - target: {fileID: 3924423491809903705, guid: 055b8710150182e4eb2cc8c3b8765ab5, type: 3}
-      propertyPath: m_Volume
-      value: 0.026
-      objectReference: {fileID: 0}
     - target: {fileID: 7342483465683006471, guid: 055b8710150182e4eb2cc8c3b8765ab5, type: 3}
       propertyPath: m_Name
       value: Rocket

@@ -13,6 +13,11 @@ public class Rocket : MonoBehaviour
     [SerializeField] AudioClip flySound;
     [SerializeField] AudioClip boomSound;
     [SerializeField] AudioClip finishSound;
+    [SerializeField] ParticleSystem flyParticles;
+    [SerializeField] ParticleSystem finishParticles;
+    [SerializeField] ParticleSystem boomParticles;
+
+    bool collisionOff = false;
 
     Rigidbody rigidBody;
     AudioSource audioSource;
@@ -35,12 +40,25 @@ public class Rocket : MonoBehaviour
         {
             Launch();
             Rotation();
+            if (Debug.isDebugBuild)
+                DebugKeys();
         }
     }
 
+    void DebugKeys()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            LoadNextLevel();
+        }
+        else if (Input.GetKeyDown(KeyCode.C))
+        {
+            collisionOff = !collisionOff;
+        }
+    }
     void OnCollisionEnter(Collision collision)
     {
-        if (state != State.Playing)
+        if (state != State.Playing || collisionOff)
         {
             return;
         }
@@ -54,21 +72,39 @@ public class Rocket : MonoBehaviour
                 print("+energy");
                 break;
             case "Finish":
-                state = State.NextLevel;
-                audioSource.PlayOneShot(finishSound);
-                Invoke("LoadNextLevel", 2f);
+                Finish();
                 break;
             default:
-                audioSource.PlayOneShot(boomSound);
-                state = State.Dead;
-                Invoke("LoadFirstLevel", 2f);
-            break;
+                Lose();
+                break;
         }
     }
     
+void Lose()
+{
+    audioSource.Stop();
+    audioSource.PlayOneShot(boomSound);
+    state = State.Dead;
+    boomParticles.Play();
+    Invoke("LoadFirstLevel", 2f);
+}
+void Finish()
+{
+    state = State.NextLevel;
+    audioSource.Stop();
+    audioSource.PlayOneShot(finishSound);
+    finishParticles.Play();
+    Invoke("LoadNextLevel", 2f);
+}
 void LoadNextLevel() // finish
 {
-    SceneManager.LoadScene(1);
+    int currentLevelIndex = SceneManager.GetActiveScene().buildIndex;
+    if (currentLevelIndex + 1 == SceneManager.sceneCountInBuildSettings)
+    {
+        // print(SceneManager.sceneCountInBuildSettings);
+        currentLevelIndex = -1;
+    }
+    SceneManager.LoadScene(currentLevelIndex + 1); 
 }
     
 void LoadFirstLevel() //lose
@@ -79,18 +115,23 @@ void LoadFirstLevel() //lose
     {
         if (Input.GetKey(KeyCode.Space))
         {
-            rigidBody.AddRelativeForce(Vector3.up * flySpeed);
+            rigidBody.AddRelativeForce(Vector3.up * flySpeed * Time.deltaTime);
             if (!audioSource.isPlaying)
-                audioSource.PlayOneShot(flySound); 
+                audioSource.PlayOneShot(flySound);
+            flyParticles.Play();
         }
         else
+        {
             audioSource.Pause();
+            flyParticles.Stop();
+        }
+        
     }
     void Rotation()
     {
         float rotationSpeed = rotSpeed * Time.deltaTime;
         rigidBody.freezeRotation = true;   
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A)) 
         {
             transform.Rotate(Vector3.forward * rotationSpeed);
         }
