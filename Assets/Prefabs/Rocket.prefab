@@ -354,7 +354,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotSpeed: 200
+  energyText: {fileID: 0}
   flySpeed: 1200
+  energyTotal: 2000
+  energyApply: 200
   flySound: {fileID: 8300000, guid: 9ffa3991364a32b4fb5a28d14f3061fc, type: 3}
   boomSound: {fileID: 8300000, guid: 295a515bd8b594a4daccc6a90dcb694b, type: 3}
   finishSound: {fileID: 8300000, guid: d539a144616bb7a49b3aeb310d6e2f0e, type: 3}

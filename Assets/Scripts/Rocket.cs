@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 
@@ -9,7 +10,11 @@ public class Rocket : MonoBehaviour
 {
     [SerializeField] float rotSpeed = 100f;
 
+    [SerializeField] Text energyText;
+
     [SerializeField] float flySpeed = 100f;
+    [SerializeField] int energyTotal = 2000;
+    [SerializeField] float energyApply = 10;
     [SerializeField] AudioClip flySound;
     [SerializeField] AudioClip boomSound;
     [SerializeField] AudioClip finishSound;
@@ -28,6 +33,7 @@ public class Rocket : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        energyText.text = energyTotal.ToString();
         state = State.Playing;
         rigidBody = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
@@ -36,7 +42,7 @@ public class Rocket : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (state == State.Playing)
+        if (state == State.Playing && energyTotal > 0)
         {
             Launch();
             Rotation();
@@ -69,7 +75,7 @@ public class Rocket : MonoBehaviour
                 print("ok");
                 break;
             case "Battery":
-                print("+energy");
+                PlusEnergy(400, collision.gameObject) ;
                 break;
             case "Finish":
                 Finish();
@@ -80,13 +86,21 @@ public class Rocket : MonoBehaviour
         }
     }
     
+
+void PlusEnergy(int energyToAdd, GameObject batteryObj)
+{
+        batteryObj.GetComponent<BoxCollider>().enabled = false;
+        energyTotal += energyToAdd;
+        energyText.text = energyTotal.ToString();
+        Destroy(batteryObj);
+}
 void Lose()
 {
     audioSource.Stop();
     audioSource.PlayOneShot(boomSound);
     state = State.Dead;
     boomParticles.Play();
-    Invoke("LoadFirstLevel", 2f);
+    Invoke("LoadFirstLevel", 2f); 
 }
 void Finish()
 {
@@ -115,6 +129,8 @@ void LoadFirstLevel() //lose
     {
         if (Input.GetKey(KeyCode.Space))
         {
+            energyTotal -= Mathf.RoundToInt(energyApply * Time.deltaTime);
+            energyText.text = energyTotal.ToString();
             rigidBody.AddRelativeForce(Vector3.up * flySpeed * Time.deltaTime);
             if (!audioSource.isPlaying)
                 audioSource.PlayOneShot(flySound);
