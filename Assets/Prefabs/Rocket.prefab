@@ -297,6 +297,7 @@ GameObject:
   - component: {fileID: 1911938986}
   - component: {fileID: 1911938988}
   - component: {fileID: 3924423491809903705}
+  - component: {fileID: 1763091413}
   m_Layer: 0
   m_Name: Rocket
   m_TagString: Untagged
@@ -355,7 +356,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotSpeed: 200
   energyText: {fileID: 0}
-  flySpeed: 1200
+  flySpeed: 1500
   energyTotal: 2000
   energyApply: 200
   flySound: {fileID: 8300000, guid: 9ffa3991364a32b4fb5a28d14f3061fc, type: 3}
@@ -385,7 +386,7 @@ AudioSource:
   Priority: 138
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 293.3327
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -460,6 +461,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1763091413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7342483465683006471}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9477da73054b444596192abeba26a5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7826949307271655349
 GameObject:
   m_ObjectHideFlags: 0

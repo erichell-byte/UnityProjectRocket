@@ -75,7 +75,7 @@ public class Rocket : MonoBehaviour
                 print("ok");
                 break;
             case "Battery":
-                PlusEnergy(400, collision.gameObject) ;
+                PlusEnergy(800, collision.gameObject) ;
                 break;
             case "Finish":
                 Finish();
